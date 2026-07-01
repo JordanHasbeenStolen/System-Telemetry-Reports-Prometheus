@@ -225,5 +225,15 @@ Prometheus is the source of truth. **Start Prometheus (and the GPU exporter, if 
 
 ---
 
-## License
-Personal project — use freely.
+## Tested environment
+
+Developed and tested on **Linux Mint 22.x (Ubuntu-based)** with a locally-installed Prometheus + node_exporter stack and an NVIDIA GPU via the exporter.
+
+Should work on most Debian/Ubuntu-family distros where Prometheus, node_exporter, and Python 3.8+ are available. It only talks to Prometheus over HTTP, so the OS mostly doesn't matter — but the install commands (`apt`, service paths, `/etc/prometheus/`) assume a Debian/Ubuntu layout.
+
+Likely to need adjustment on:
+- **Other Linux families** (Arch, Fedora, etc.) — package names and config paths differ.
+- **Windows / macOS** — no `apt`, no systemd; you'd run Prometheus/exporters manually and only the Python export part works as-is.
+- **Remote / containerized Prometheus** — change the `PROMETHEUS` URL accordingly.
+
+GPU features assume an NVIDIA card with a working `nvidia-smi`; AMD/Intel GPUs are not covered.
